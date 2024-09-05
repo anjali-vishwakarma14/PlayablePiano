@@ -7,10 +7,16 @@ let allKeys = [],
     audio = new Audio("tunes/a.wav");
 
 const playTune = (key) => {
-    audio.src = `tunes/${key}.wav`;
-    audio.play();
-    // .catch(e => console.error("Playback prevented", e)); // Catch potential playback errors
-    console.log(allKeys);
+     audioSrc = `tunes/${key}.wav`;
+    if (audio.src !== audioSrc) {
+        audio.src = audioSrc;
+        audio.load();  // Explicitly load the new audio
+    }
+
+    audio.play().catch((err) => {
+        console.error("Audio play failed: ", err);
+    });
+
 
     const clickedKey = document.querySelector(`[data-key="${key}"]`);
     clickedKey.classList.add("active");
