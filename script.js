@@ -8,7 +8,8 @@ let allKeys = [],
 
 const playTune = (key) => {
     audio.src = `tunes/${key}.wav`;
-    audio.play().catch(e => console.error("Playback prevented", e)); // Catch potential playback errors
+    audio.play();
+    // .catch(e => console.error("Playback prevented", e)); // Catch potential playback errors
     console.log(allKeys);
 
     const clickedKey = document.querySelector(`[data-key="${key}"]`);
