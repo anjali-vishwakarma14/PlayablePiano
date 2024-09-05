@@ -4,10 +4,10 @@ const pianoKeys = document.querySelectorAll(".piano-keys .key"),
 
 
 let allKeys = [],
-    audio = new Audio("tunes/a.wav");
+    audio = new Audio("/tunes/a.wav");
 
 const playTune = (key) => {
-    audio.src = `tunes/${key}.wav`;
+    audio.src = `/tunes/${key}.wav`;
     audio.play().catch(e => console.error("Playback prevented", e)); // Catch potential playback errors
     console.log(allKeys);
 
@@ -20,7 +20,7 @@ const playTune = (key) => {
 
 const initializeAudio = () => {
     if (audio.src === "") {
-        audio.src = "tunes/a.wav"; // Initial sound (needed to prime the audio context on mobile)
+        audio.src = "/tunes/a.wav"; // Initial sound (needed to prime the audio context on mobile)
         audio.play().catch(e => console.log("Initial play prevented by mobile policy:", e));
     }
 };
